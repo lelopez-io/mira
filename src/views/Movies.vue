@@ -1,5 +1,17 @@
 <template>
   <div id="movies">
-    <h1>Movies</h1>
+    <Featured />
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import Featured from '@/components/layout/Featured.vue'
+
+export default {
+  name: 'movies',
+  components: {
+    Featured
+  }
+}
+</script>
