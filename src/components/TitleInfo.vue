@@ -60,6 +60,7 @@ export default {
 }
 #title-info {
   padding-bottom: 70px;
+  max-width: 50%;
 }
 
 .specs span {
