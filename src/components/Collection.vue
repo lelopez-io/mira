@@ -18,10 +18,10 @@
 
     <div class="collection">
       <div
-        v-for="title in titles"
+        v-for="title in collection"
         :key="title.id"
         class="title"
-        @click="selected = title.id"
+        @click="$emit('select-title', title.id)"
       >
         <img
           :class="{ active: title.id == selected }"
@@ -52,24 +52,9 @@
 
 <script>
 export default {
+  props: ['collection', 'selected'],
   data() {
-    return {
-      titles: [
-        {
-          id: 1,
-          name: 'this movie'
-        },
-        {
-          id: 2,
-          name: 'this movie'
-        },
-        {
-          id: 3,
-          name: 'this movie'
-        }
-      ],
-      selected: undefined
-    }
+    return {}
   }
 }
 </script>
@@ -84,6 +69,7 @@ $arrow-padding: 10px;
   color: #fff;
   position: relative;
   overflow: visable;
+  padding-bottom: 30px;
 }
 
 .arrow {
