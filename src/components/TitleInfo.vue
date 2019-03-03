@@ -25,9 +25,9 @@
         <span><strong>Staring:</strong> {{ selection.category }}</span>
       </p>
     </div>
-    <div v-if="showSocial === true">
-      <Social />
-    </div>
+    <transition name="slide">
+      <Social v-if="showSocial === true" :friendsList="friendsList" />
+    </transition>
   </div>
 </template>
 
@@ -35,7 +35,7 @@
 import Social from '@/components/Social.vue'
 export default {
   components: { Social },
-  props: ['selection'],
+  props: ['selection', 'friendsList'],
   data() {
     return {
       showSocial: false
@@ -53,12 +53,12 @@ export default {
 
 <style lang="scss" scoped>
 #selection {
-  padding: 30px 60px 100px;
+  padding: 30px 60px;
   display: flex;
-  flex: 1;
+  flex: 1 1 auto;
 }
 #title-info {
-  max-width: 50%;
+  padding-bottom: 70px;
 }
 
 .specs span {
@@ -89,7 +89,7 @@ export default {
   &.play {
     background-color: #e50914;
     border: 1px solid #e50914;
-
+    margin-bottom: 10px;
     &:active,
     &:focus {
       border-color: #fff;
@@ -110,5 +110,18 @@ export default {
       outline: none;
     }
   }
+}
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-enter-active {
+  transition: all 1.3s ease;
+}
+.slide-leave-active {
+  transition: all 1.3s ease;
+}
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>
