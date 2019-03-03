@@ -68,11 +68,12 @@ export default {
 
 <style lang="scss" scoped>
 #featured {
-  box-shadow: inset 0px 0px 150px 60px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0px 0px 200px 100px rgba(0, 0, 0, 0.8);
 
   z-index: -1;
   width: 100%;
   height: calc(95vh - 100px);
+  margin-bottom: -75px;
 }
 .selection {
   color: #fff;
