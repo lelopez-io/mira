@@ -4,6 +4,7 @@
       :collection="titles"
       :selected="selected"
       v-on:select-title="selectTitle"
+      v-on:hide-selection="selected = undefined"
     />
     <div v-if="selected !== undefined">
       <TitleInfo
@@ -34,7 +35,9 @@ export default {
             'When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.',
           runtime: 122,
           year: 2019,
-          price: 25.99
+          price: 25.99,
+          img:
+            'https://image.tmdb.org/t/p/w500//xRWht48C2V8XNfzvPehyClOvDni.jpg'
         },
         {
           id: 2,
@@ -44,17 +47,33 @@ export default {
             'When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.',
           runtime: 129,
           year: 2019,
-          price: 25.99
+          price: 25.99,
+          img:
+            'https://image.tmdb.org/t/p/w500//svIDTNUoajS8dLEo7EosxvyAsgJ.jpg'
         },
         {
           id: 3,
-          title: 'Black Panther',
+          title: 'Spider Man',
           category: 'Fantasy/Science Fiction',
           description:
             'When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.',
           runtime: 135,
           year: 2018,
-          price: 19.99
+          price: 19.99,
+          img:
+            'https://image.tmdb.org/t/p/w500//iiZZdoQBEYBv6id8su7ImL0oCbD.jpg'
+        },
+        {
+          id: 4,
+          title: 'How to Train',
+          category: 'Fantasy/Science Fiction',
+          description:
+            'When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.',
+          runtime: 135,
+          year: 2018,
+          price: 19.99,
+          img:
+            'https://image.tmdb.org/t/p/w500//xvx4Yhf0DVH8G4LzNISpMfFBDy2.jpg'
         }
       ],
       selected: undefined,
