@@ -4,7 +4,7 @@
     <ul class="nav-links">
       <router-link to="/">Home</router-link>
       <!-- <router-link to="/tvshows">TV Shows</router-link> -->
-      <router-link to="/movies">Movies</router-link>
+      <!-- <router-link to="/movies">Movies</router-link> -->
       <router-link to="/about">About</router-link>
     </ul>
   </div>
