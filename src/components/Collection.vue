@@ -15,20 +15,17 @@
         </g>
       </svg>
     </button>
+
     <div class="collection">
       <div class="title">
         <img
           class="cover"
           src="https://image.tmdb.org/t/p/w500//xRWht48C2V8XNfzvPehyClOvDni.jpg"
         />
-      </div>
-      <div class="title">
-        <img
-          class="cover"
-          src="https://image.tmdb.org/t/p/w500//xRWht48C2V8XNfzvPehyClOvDni.jpg"
-        />
+        <div class="arrow-down"></div>
       </div>
     </div>
+
     <button class="arrow right">
       <svg
         version="1.1"
@@ -46,6 +43,14 @@
     </button>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    ''
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 $arrow-padding: 10px;
@@ -104,6 +109,21 @@ $arrow-padding: 10px;
 
 .title img {
   max-height: 250px;
-  padding: 20px;
+  margin: 0px 20px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  &:hover,
+  &.active {
+    border: 2px solid #fff;
+  }
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 10px solid #fff;
+  margin: -10px auto 0;
 }
 </style>
