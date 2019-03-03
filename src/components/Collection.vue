@@ -1,6 +1,6 @@
 <template>
   <div id="slider">
-    <button class="arrow left">
+    <button @click="leftSlide" class="arrow left">
       <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@
 
     <div class="collection">
       <div
-        v-for="title in collection"
+        v-for="title in collection.slice(start, start + maxTitles)"
         :key="title.id"
         class="title"
         @click="$emit('select-title', title.id)"
@@ -26,13 +26,13 @@
         <img
           :class="{ active: title.id == selected }"
           class="cover"
-          src="https://image.tmdb.org/t/p/w500//xRWht48C2V8XNfzvPehyClOvDni.jpg"
+          :src="title.img"
         />
         <div v-if="title.id == selected" class="arrow-down"></div>
       </div>
     </div>
 
-    <button class="arrow right">
+    <button @click="rightSlide" class="arrow right">
       <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,65 @@
 export default {
   props: ['collection', 'selected'],
   data() {
-    return {}
+    return {
+      // + or - start and end by maxTitles when arrows are clicked
+      maxTitles: undefined,
+      start: 0,
+      end: this.start + this.maxTitles
+    }
+  },
+  methods: {
+    calcMaxTitles() {
+      var vw = Math.max(
+        document.documentElement.clientWidth,
+        window.innerWidth || 0
+      )
+      this.maxTitles = Math.floor((vw - 100) / 200)
+    },
+    leftSlide() {
+      if (this.start == 0) {
+        this.start == 0
+      } else {
+        this.start--
+
+        if (
+          !this.collection
+            .slice(this.start, this.start + this.maxTitles)
+            .some(e => e.id === this.selected)
+        ) {
+          /* vendors contains the element we're looking for */
+          this.hideSelection()
+        }
+      }
+    },
+    rightSlide() {
+      if (this.start + 1 > this.collection.length - this.maxTitles) {
+        this.start = this.start
+      } else {
+        this.start++
+
+        if (
+          !this.collection
+            .slice(this.start, this.start + this.maxTitles)
+            .some(e => e.id === this.selected)
+        ) {
+          /* vendors contains the element we're looking for */
+          this.hideSelection()
+        }
+      }
+    },
+    hideSelection() {
+      this.$emit('hide-selection')
+    }
+  },
+  mounted() {
+    this.calcMaxTitles()
+    this.end = this.maxTitles
+    window.addEventListener('resize', this.calcMaxTitles)
+  },
+  beforeDestroy() {
+    // Unregister the event listener before destroying this Vue instance
+    window.unbind('resize', this.calcMaxTitles)
   }
 }
 </script>
