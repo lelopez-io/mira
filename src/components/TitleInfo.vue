@@ -12,8 +12,9 @@
         <button class="btn play">PLAY</button>
         <button class="btn ">+ My List</button><br />
 
-        <button class="btn circle"><span> 👍</span></button>
-        <button class="btn circle"><span> 👎</span></button>
+        <button class="btn circle"><span>&nbsp;👍</span></button>
+        <!-- thumbs down needs to be pushed down some -->
+        <button class="btn circle"><span>&nbsp;👎</span></button>
         <button class="btn circle" @click="showSocial = !showSocial">
           <span>21</span>
         </button>
