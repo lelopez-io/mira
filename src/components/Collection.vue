@@ -17,12 +17,18 @@
     </button>
 
     <div class="collection">
-      <div class="title">
+      <div
+        v-for="title in titles"
+        :key="title.id"
+        class="title"
+        @click="selected = title.id"
+      >
         <img
+          :class="{ active: title.id == selected }"
           class="cover"
           src="https://image.tmdb.org/t/p/w500//xRWht48C2V8XNfzvPehyClOvDni.jpg"
         />
-        <div class="arrow-down"></div>
+        <div v-if="title.id == selected" class="arrow-down"></div>
       </div>
     </div>
 
@@ -47,7 +53,23 @@
 <script>
 export default {
   data() {
-    ''
+    return {
+      titles: [
+        {
+          id: 1,
+          name: 'this movie'
+        },
+        {
+          id: 2,
+          name: 'this movie'
+        },
+        {
+          id: 3,
+          name: 'this movie'
+        }
+      ],
+      selected: undefined
+    }
   }
 }
 </script>
@@ -107,11 +129,13 @@ $arrow-padding: 10px;
   justify-content: space-between;
 }
 
+.title {
+  cursor: pointer;
+}
 .title img {
   max-height: 250px;
   margin: 0px 20px;
   border: 2px solid transparent;
-  cursor: pointer;
   &:hover,
   &.active {
     border: 2px solid #fff;
