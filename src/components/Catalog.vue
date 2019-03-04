@@ -8,11 +8,7 @@
     />
     <div v-if="selected !== undefined">
       <TitleInfo
-        :selection="
-          titles.find(title => {
-            return title.id === selected
-          })
-        "
+        :selection="titles.find(title => title.ID === selected)"
         :friendsList="friendsList"
       />
     </div>
@@ -108,8 +104,8 @@ export default {
   },
   created() {
     axios
-      .get('https://2c32y722r7.execute-api.us-east-1.amazonaws.com/dev/Mira')
-      .then(response => (this.titles = response))
+      .get('https://89lk4829g0.execute-api.us-east-1.amazonaws.com/dev/Mira')
+      .then(response => (this.titles = response.data))
   }
 }
 </script>
