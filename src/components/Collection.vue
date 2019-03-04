@@ -19,16 +19,16 @@
     <div class="collection">
       <div
         v-for="title in collection.slice(start, start + maxTitles)"
-        :key="title.id"
+        :key="title.ID"
         class="title"
-        @click="$emit('select-title', title.id)"
+        @click="$emit('select-title', title.ID)"
       >
         <img
-          :class="{ active: title.id == selected }"
+          :class="{ active: title.ID == selected }"
           class="cover"
-          :src="title.img"
+          :src="getPoster(title.poster_path)"
         />
-        <div v-if="title.id == selected" class="arrow-down"></div>
+        <div v-if="title.ID == selected" class="arrow-down"></div>
       </div>
     </div>
 
@@ -78,7 +78,7 @@ export default {
         if (
           !this.collection
             .slice(this.start, this.start + this.maxTitles)
-            .some(e => e.id === this.selected)
+            .some(e => e.ID === this.selected)
         ) {
           /* vendors contains the element we're looking for */
           this.hideSelection()
@@ -94,7 +94,7 @@ export default {
         if (
           !this.collection
             .slice(this.start, this.start + this.maxTitles)
-            .some(e => e.id === this.selected)
+            .some(e => e.ID === this.selected)
         ) {
           /* vendors contains the element we're looking for */
           this.hideSelection()
@@ -103,6 +103,10 @@ export default {
     },
     hideSelection() {
       this.$emit('hide-selection')
+    },
+
+    getPoster(value) {
+      return 'https://image.tmdb.org/t/p/w500' + value
     }
   },
   mounted() {
