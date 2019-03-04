@@ -18,7 +18,7 @@ export default {
 <style lang="scss">
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 #app {
