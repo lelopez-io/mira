@@ -22,60 +22,12 @@
 <script>
 import Collection from '@/components/Collection.vue'
 import TitleInfo from '@/components/TitleInfo'
+import axios from 'axios'
 export default {
   components: { Collection, TitleInfo },
   data() {
     return {
-      titles: [
-        {
-          id: 1,
-          title: 'Altina: Battle Angel',
-          category: 'Fantasy/Science Fiction',
-          description:
-            'When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.',
-          runtime: 122,
-          year: 2019,
-          price: 25.99,
-          img:
-            'https://image.tmdb.org/t/p/w500//xRWht48C2V8XNfzvPehyClOvDni.jpg'
-        },
-        {
-          id: 2,
-          title: 'Glass',
-          category: 'Drama/Fantasy',
-          description:
-            'When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.',
-          runtime: 129,
-          year: 2019,
-          price: 25.99,
-          img:
-            'https://image.tmdb.org/t/p/w500//svIDTNUoajS8dLEo7EosxvyAsgJ.jpg'
-        },
-        {
-          id: 3,
-          title: 'Spider Man',
-          category: 'Fantasy/Science Fiction',
-          description:
-            'When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.',
-          runtime: 135,
-          year: 2018,
-          price: 19.99,
-          img:
-            'https://image.tmdb.org/t/p/w500//iiZZdoQBEYBv6id8su7ImL0oCbD.jpg'
-        },
-        {
-          id: 4,
-          title: 'How to Train',
-          category: 'Fantasy/Science Fiction',
-          description:
-            'When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.',
-          runtime: 135,
-          year: 2018,
-          price: 19.99,
-          img:
-            'https://image.tmdb.org/t/p/w500//xvx4Yhf0DVH8G4LzNISpMfFBDy2.jpg'
-        }
-      ],
+      titles: [],
       selected: undefined,
       friendsList: [
         {
@@ -153,6 +105,11 @@ export default {
       }
       //get list of friends watching this selected title and sort by highest
     }
+  },
+  created() {
+    axios
+      .get('https://2c32y722r7.execute-api.us-east-1.amazonaws.com/dev/Mira')
+      .then(response => (this.titles = response))
   }
 }
 </script>
