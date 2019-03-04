@@ -3,11 +3,11 @@
     <div id="title-info">
       <h2>{{ selection.title }}</h2>
       <p class="specs">
-        <span>{{ selection.year }}</span>
-        <span>{{ selection.rating }}</span>
-        <span>{{ selection.runtime }}m</span>
+        <span>{{ selection.release_date.substring(0, 4) }}</span>
+        <span>{{ selection.vote_average }}/10</span>
+        <!-- <span>{{ selection.runtime }}m</span> -->
       </p>
-      <p class="description">{{ selection.description }}</p>
+      <p class="description">{{ selection.overview }}</p>
       <div class="title-options">
         <button class="btn play">PLAY</button>
         <button class="btn ">+ My List</button><br />
@@ -20,11 +20,11 @@
         </button>
       </div>
 
-      <p class="additional">
+      <!-- <p class="additional">
         <span><strong>Genres:</strong> {{ selection.category }}</span
         ><br />
         <span><strong>Staring:</strong> {{ selection.category }}</span>
-      </p>
+      </p> -->
     </div>
     <transition name="slide">
       <Social v-if="showSocial === true" :friendsList="friendsList" />
